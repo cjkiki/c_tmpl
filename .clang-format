@@ -1,0 +1,34 @@
+---
+Language: Cpp
+BasedOnStyle: LLVM
+
+# Indentation
+IndentWidth: 4
+UseTab: Never
+
+# Braces
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterFunction: true
+  AfterControlStatement: MultiLine
+  AfterStruct: false
+  BeforeElse: false
+
+# Spaces
+SpaceAfterCStyleCast: true
+SpaceBeforeParens: ControlStatements
+SpaceInEmptyParentheses: false
+
+# Order
+SortIncludes: true
+IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex:           '^<.*'
+    Priority:        1
+  - Regex:           '^".*'
+    Priority:        2
+
+# Modernisation
+AlignAfterOpenBracket: Align
+AlignOperands: true
+...
