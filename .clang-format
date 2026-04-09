@@ -1,12 +1,23 @@
 ---
 Language: Cpp
 BasedOnStyle: LLVM
-
-# Indentation
 IndentWidth: 4
+ColumnLimit: 100
 UseTab: Never
 
-# Braces
+AllowShortFunctionsOnASingleLine: None
+AllowShortBlocksOnASingleLine: Never
+AllowShortIfStatementsOnASingleLine: Never
+
+AlignConsecutiveAssignments:
+  Enabled: true
+  AcrossEmptyLines: false
+  AcrossComments: false
+  AlignCompound: true
+  PadOperators: true
+
+AlignConsecutiveDeclarations: true
+
 BreakBeforeBraces: Custom
 BraceWrapping:
   AfterFunction: true
@@ -14,21 +25,19 @@ BraceWrapping:
   AfterStruct: false
   BeforeElse: false
 
-# Spaces
 SpaceAfterCStyleCast: true
 SpaceBeforeParens: ControlStatements
 SpaceInEmptyParentheses: false
 
-# Order
 SortIncludes: true
 IncludeBlocks: Regroup
-IncludeCategories:
-  - Regex:           '^<.*'
-    Priority:        1
-  - Regex:           '^".*'
-    Priority:        2
 
-# Modernisation
+IncludeCategories:
+  - Regex: '^<.*'
+    Priority: 1
+  - Regex: '^".*'
+    Priority: 2
+
 AlignAfterOpenBracket: Align
 AlignOperands: true
 ...
