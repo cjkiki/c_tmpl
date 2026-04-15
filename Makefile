@@ -20,7 +20,7 @@ OBJS_DBG = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/debug/%.o,$(SRCS))
 OBJS_REL = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/release/%.o,$(SRCS))
 TARGET = $(NAME)
 
-.PHONY: all debug release format clean
+.PHONY: all debug release lint format clean
 all: debug release
 
 debug: $(BIN_DIR)/debug/$(TARGET)
@@ -42,6 +42,9 @@ $(OBJ_DIR)/debug/%.o: $(SRC_DIR)/%.c
 $(OBJ_DIR)/release/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -O3 -DDEBUG -c $< -o $@
+
+lint:
+	clang-tidy $(SRCS) -header-filter=".*" -- $(CFLAGS)
 
 format:
 	clang-format -i $(SRCS) $(HDRS)
