@@ -15,6 +15,7 @@ BIN_DIR = $(BUILD_DIR)/bin
 
 # Source & object files
 SRCS = $(shell find $(SRC_DIR)/ -name '*.c')
+HDRS = $(shell find include/ -name '*.h')
 OBJS_DBG = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/debug/%.o,$(SRCS))
 OBJS_REL = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/release/%.o,$(SRCS))
 TARGET = $(NAME)
@@ -43,7 +44,7 @@ $(OBJ_DIR)/release/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -O3 -DDEBUG -c $< -o $@
 
 format:
-	find . -name "*.c" -o -name "*.h" | xargs clang-format -i
+	clang-format -i $(SRCS) $(HDRS)
 
 clean:
 	rm -rf $(BUILD_DIR)
